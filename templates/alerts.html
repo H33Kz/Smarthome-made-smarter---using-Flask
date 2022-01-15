@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Alerts{% endblock %}
+
+{% block active_alerts %}class="active"{% endblock %}
+
+{% block content %}
+<center>
+    <div><table class="table table-bordered">
+        <thead>
+            <tr>
+            <th scope="col"><span style="font-size:30px">Smoke level</span></th>
+            <th scope="col"><span style="font-size:30px">Water level</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td><h1><span id=smoke style="color:gray">Placeholder</span></h1></td>
+            <td><h1><span id=water style="color:rgb(102, 204, 255)">Placeholder</span></h1></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <th scope="col"><span style="font-size:15px">...</span></th>
+            <th scope="col"><span style="font-size:15px">% of whole scale</span></th>
+        </tfoot>
+        </table>
+    </div>
+</center>
+{% endblock %}

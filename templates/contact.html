@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock %}
+
+{% block active_contact %}class="active"{% endblock %}
+
+{% block content %}
+<center>
+    <b>
+        Cretors of this site:
+    </b>
+</center>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">e-mail</th>
+        <th scope="col">github</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>Piotr</td>
+        <td>Snarski</td>
+        <td>piotrek.snarski@gmail.com</td>
+        <td><a href="https://github.com/H33Kz" target="_blank" rel="noopener noreferrer">github.com/H33Kz</a></td>
+        </tr>
+        <tr>
+        <td>Łukasz</td>
+        <td>Szołtysik</td>
+        <td>lukasz.szoltysik@podlesie.net</td>
+        <td><a href="https://github.com/BlanC2137" target="_blank" rel="noopener noreferrer">github.com/BlanC2137</a></td>
+        </tr>
+        <tr>
+        <td>Adam</td>
+        <td>Szydło</td>
+        <td>adam@clubpenguin.com</td>
+        <td><a href="https://github.com/AsBlade" target="_blank" rel="noopener noreferrer">github.com/AsBlade</a></td>
+        </tr>
+    </tbody>
+    </table>
+{% endblock %}

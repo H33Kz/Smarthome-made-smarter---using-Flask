@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Tempgraph{% endblock %}
+
+{% block active_temp %}class="active"{% endblock %}
+
+{% block content %}
+    <br>
+    <div class="container">
+        <canvas id="chart"></canvas>
+    </div>
+    <center>
+        <button class="btn-less">Show less(-1)</button>
+        <button class="btn-default" onclick="window.location.reload()">Default</button>
+        <button class="btn-more">Show more(+1)</button>
+        <br>
+        <br>
+        <button class="btn-leftshift"><- Shift left</button>
+        <button class="btn-showfifty">Show 50 measurments</button>
+        <button class="btn-rightshift">Shift right -></button>
+    </center>
+    <script type="text/javascript">
+        const labels = [
+            '-50mins',
+            '-40mins',
+            '-30mins',
+            '-20mins',
+            '-10mins',
+            'Now',
+        ];
+        //Data and its options
+        const data = {
+            //Using previously set labels
+            labels: labels,
+            //Dataset configuration
+            datasets: [{
+                label: 'Temperature',
+                backgroundColor: 'rgb(204, 90, 230)',
+                borderColor: 'rgb(204, 90, 230)',
+                fill:true,
+                data:[
+                    Math.floor(Math.random()*30),
+                    Math.floor(Math.random()*30),
+                    Math.floor(Math.random()*30),
+                    Math.floor(Math.random()*30),
+                    Math.floor(Math.random()*30),
+                    Math.floor(Math.random()*30)
+                ]
+            }]
+        };
+        //Chart configuration
+        const config = {
+            type: 'line', //Graph type
+            data: data, //Data used in graph - we use data set before
+            //Additional options to graph - animations, title etc.
+            options: {
+                //Animation set to tension - blocked to achieve smoother graph
+                animations:{
+                    tension:{
+                        easing: 'linear',
+                        from: 0.3,
+                        to: 0.3,
+                    }
+                },
+                plugins:{
+                    title:{
+                        display:true,
+                        text:'Temperature graph',
+                        font:{size:32}
+                    },
+                    legend:{
+                        display:false
+                    }
+                }
+            }
+        };
+
+        var myChart = document.getElementById('chart').getContext('2d');
+        var lineChart = new Chart(myChart,config);
+
+        function ChartUpdate() {
+            lineChart.data.datasets[0].data = [
+                Math.floor(Math.random()*20),
+                Math.floor(Math.random()*20),
+                Math.floor(Math.random()*20),
+                Math.floor(Math.random()*20),
+                Math.floor(Math.random()*20),
+                Math.floor(Math.random()*20),
+                Math.floor(Math.random()*20)];
+            lineChart.update();
+            setTimeout(ChartUpdate,5000);
+        }
+        function AddNewValue(){
+            lineChart.data.datasets[0].data.push(Math.floor(Math.random()*20));
+            lineChart.data.labels.push("label");
+
+            lineChart.data.datasets[0].data.shift();
+            lineChart.data.labels.shift();
+
+            lineChart.update();
+        }
+    </script>
+{% endblock %}
